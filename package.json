@@ -1,0 +1,25 @@
+{
+  "name": "postgres_api",
+  "version": "1.0.0",
+  "description": "Learning postgresql api",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jed Parry",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "^0.3.0",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "eval": "^0.1.2",
+    "express": "*",
+    "express-jwt": "^5.3.1",
+    "express-jwt-authz": "^1.0.0",
+    "jwks-rsa": "^1.3.0",
+    "node": "^10.8.0",
+    "pg": "*"
+  }
+}

@@ -1,0 +1,92 @@
+{>layout/}
+
+{<body}
+    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#formModal">Add fuel</button>
+    <br>
+    {#fuel}
+        <div class="well">
+            <h4>{fuel_type} <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#{fuel_id}" aria-expanded="false" aria-controls="{fuel_id}">View</button></h4>
+            <div class="collapse" id="{fuel_id}">
+                <div class="card card-body">
+                  Price per Litre: {fuel_price}<br>Octane Rating: {octane_rating}
+                </div>
+                <button class="btn btn-default edit-fuel" data-toggle="modal" data-target="#editFormModal" data-id="{fuel_id}" data-type="{fuel_type}" data-price="{fuel_price}" data-octane="{octane_rating}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
+                </button>
+                <button class="btn btn-danger delete-fuel" data-fuel_id="{fuel_id}">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true">Del</span>
+                </button>
+                <br>
+            </div>
+        </div>
+    {/fuel}
+
+    <!-- Add Fuel Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <form method="post" action="/add">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="formModalLabel">Add fuel</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label>Fuel Type</label>
+                <input type="text" class="form-control" name="fuel_type">
+            </div>
+            <div class="form-group">
+                <label>Octane Rating</label>
+                <input type="number" class="form-control" name="octane_rating">
+            </div>
+            <div class="form-group">
+                <label>Price per Litre</label>
+                <input type="number" step="0.01" class="form-control" name="price_per_litre">
+            </div>
+            <div class="form-group">
+                <label>Price per Gallon</label>
+                <input type="number" step="0.01" class="form-control" name="price_per_gallon">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save"/>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Fuel Modal -->
+    <div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <form method="post" action="/edit">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="editFormModalLabel">Edit fuel</h4>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+                <label>Fuel Type</label>
+                <input type="text" class="form-control" name="fuel_type" id="edit-form-type">
+                <input type="hidden" class="form-control" name="fuel_id" id="edit-form-id">
+            </div>
+            <div class="form-group">
+                <label>Price per Litre</label>
+                <input type="number" step="0.01" class="form-control" name="fuel_price" id="edit-form-price">
+            </div>
+            <div class="form-group">
+                <label>Octane Rating</label>
+                <input type="number" class="form-control" name="octane_rating" id="edit-form-octane">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="Save"/>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+{/body}
